@@ -1,0 +1,30 @@
+{
+  "name": "Access-Check",
+  "version": "0.1.0",
+  "description": "Calls out to the AccessChk sysinternals exe and returns effective user permissions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nikk1e/Access-Check.git"
+  },
+  "keywords": [
+    "AccessChk",
+    "node",
+    "Access",
+    "Check",
+    "Permissions"
+  ],
+  "author": "Nick Andrews",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nikk1e/Access-Check/issues"
+  },  
+  "os": ["win32"],
+  "homepage": "https://github.com/nikk1e/Access-Check",
+  "dependencies" : {
+    "child_process" : "latest"
+  }
+}
