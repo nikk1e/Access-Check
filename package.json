@@ -23,8 +23,5 @@
     "url": "https://github.com/nikk1e/Access-Check/issues"
   },  
   "os": ["win32"],
-  "homepage": "https://github.com/nikk1e/Access-Check",
-  "dependencies" : {
-    "child_process" : "latest"
-  }
+  "homepage": "https://github.com/nikk1e/Access-Check"  
 }
