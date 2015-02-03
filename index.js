@@ -1,26 +1,36 @@
-var childProcess = require('child_process');
-
 module.exports = {
 	checkDirectoryPermissions: function(user, directory, callback){
 
-		var output = "empty";
-		var command = 'accesschk ' + user + ' ' + directory + ' -d';
-		console.log(command);
+		var spawn = require('child_process').spawn;
+		var accesschk = spawn('accesschk', [user,directory,'-d','-q'], {stdio: 'pipe'});
 
-		childProcess.exec(command, function(err, stdout){
-			if(err!=undefined) console.log('Error with command [' + command +']'+ err);
-			
+		console.log('pid:' + accesschk.pid);			
+		var properties = {};
+		var error = "";		
+
+		accesschk.stdout.on('data', function(data){	
 			//look at the output
 			var writable = /^.W/; //'RW'|' W'
-			var readable = /^R/; //R			
-
-			var properties = 
+			var readable = /^R/; //R
+			properties = 
 			{				
-				isReadable:readable.test(stdout),
-				isWritable:writable.test(stdout),
-			};
+				isReadable:readable.test(data),
+				isWritable:writable.test(data),
+			};									
+		});
 
-			callback(err, properties);
-		});		
-	},
+		accesschk.stderr.on('data', function(data){
+			error = data;
+		});
+	
+		accesschk.on('exit', function(code){
+			if(code==0)	{
+				callback(null, properties);
+			}
+			else {
+				callback(error, {isReadable:false,isWritable:false});
+				console.log('Accesschk exited with code: ' + code);
+			}			
+		});			
+	},	
 };
