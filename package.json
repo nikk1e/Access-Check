@@ -1,6 +1,6 @@
 {
   "name": "access-check",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Calls out to the AccessChk sysinternals exe and returns effective user permissions",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nikk1e/access-check/issues"
-  },  
-  "os": ["win32"],
-  "homepage": "https://github.com/nikk1e/access-check"  
+  },
+  "os": [
+    "win32"
+  ],
+  "homepage": "https://github.com/nikk1e/access-check"
 }
