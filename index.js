@@ -2,7 +2,7 @@ module.exports = {
 	checkDirectoryPermissions: function(user, directory, callback){
 
 		var spawn = require('child_process').spawn;
-		var accesschk = spawn('accesschk', [user,directory,'-d','-q'], {stdio: 'pipe'});
+		var accesschk = spawn('accesschk', ['/accepteula', user,directory,'-d','-q'], {stdio: 'pipe'});
 
 		console.log('pid:' + accesschk.pid);			
 		var properties = {};
